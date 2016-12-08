@@ -18,7 +18,6 @@ RUN \
   apt-get install -y $DEPENDENCIES && \
 
 # Create directory structure, fetch binary and unpack
-mkdir /config && \
 mkdir /transcode && \
 mkdir /multimedia && \
 mkdir -p /tmp/avhd-pkg && \
