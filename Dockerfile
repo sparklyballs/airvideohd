@@ -23,7 +23,7 @@ mkdir /transcode && \
 mkdir /multimedia && \
 mkdir -p /tmp/avhd-pkg && \
 cd /tmp/avhd-pkg && \
-wget -qO - "https://s3.amazonaws.com/AirVideoHD/Download/AirVideoServerHD-${AVSERVERHD_VERSION}.tar.bz2 | tar xjf - -C /opt/AirVideoServerHD && \
+wget -qO - "https://s3.amazonaws.com/AirVideoHD/Download/AirVideoServerHD-${AVSERVERHD_VERSION}.tar.bz2" | tar xjf - -C /opt/AirVideoServerHD && \
 
 # Clean up
 apt-get purge -y wget bzip2 && \
