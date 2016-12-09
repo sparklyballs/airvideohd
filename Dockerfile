@@ -26,7 +26,7 @@ RUN \
   tar xjf /tmp/avhd-pkg.tar.bz2 -C /opt && \
 
 # Clean up
-  apt-get purge -y $DEPENDENCIES && \
+  apt-get purge -y wget bzip2 && \
   apt-get autoremove -y && \
   apt-get clean -y && \
   rm -rf /var/lib/apt/lists/* /tmp/*
