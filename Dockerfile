@@ -19,7 +19,8 @@ RUN \
 
 # Create directory structure, fetch binary and unpack
   mkdir -p /opt/AirVideoServerHD && \
-  curl -o /tmp/avhd-pkg.tar.bz2 -L \ "https://s3.amazonaws.com/AirVideoHD/Download/AirVideoServerHD-${AVSERVERHD_VERSION}.tar.bz2" && \
+  curl -o --tlsv1 \
+    /tmp/avhd-pkg.tar.bz2 -L \ "https://s3.amazonaws.com/AirVideoHD/Download/AirVideoServerHD-${AVSERVERHD_VERSION}.tar.bz2" && \
   tar xjf avhd-pkg.tar.bz2 -C /opt/AirVideoServerHD && \
 
 # Clean up
