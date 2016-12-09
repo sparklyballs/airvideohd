@@ -8,4 +8,4 @@
 
 # Set permissions
 chown -R abc:abc \
-  /config /transcode
+  /config /transcode /opt/AirVideoServerHD
