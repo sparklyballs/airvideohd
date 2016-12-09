@@ -1,5 +1,9 @@
 #!/usr/bin/with-contenv bash
 
+# Prep directories
+mkdir /transcode \
+  /multimedia && \
+
 # Copy default config in place and match
 # AirVideo Server Computer Name with Container name
 [[ ! -e /config/Server.properties ]] && \
@@ -9,3 +13,7 @@
 # Set permissions
 chown -R abc:abc \
   /config /transcode /opt/AirVideoServerHD
+
+# Make sure binary is executable
+chmod +x \
+  /opt/AirVideoServerHD/AirVideoServerHD
