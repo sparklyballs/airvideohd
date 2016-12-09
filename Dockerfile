@@ -8,7 +8,9 @@ ARG AVSERVERHD_VERSION="2.2.3"
 ARG DEBIAN_FRONTEND="noninteractive"
 ARG DEPENDENCIES="\
   wget \
-  bzip2"
+  bzip2 \
+  avahi-daemon \
+  dbus"
 ENV LANG C.UTF-8
 
 # Install required packages
@@ -33,5 +35,5 @@ RUN \
 COPY /root /
 
 # Setup ports and volumes for mapping
-EXPOSE 45633
+EXPOSE 45633 5353/udp
 VOLUME /config /transcode /multimedia

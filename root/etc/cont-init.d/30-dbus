@@ -1,0 +1,15 @@
+#!/usr/bin/with-contenv bash
+
+# Prep folders
+mkdir -p \
+  /var/run/dbus
+
+# Cleanup any previous PID's if found
+[[ -e /var/run/dbus/pid ]] && \
+  rm -f /var/run/dbus/pid
+
+# Set permissions on dbus temp folder
+chown messagebus:messagebus \
+  /var/run/dbus
+dbus-uuidgen --ensure
+sleep 1
