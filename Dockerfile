@@ -7,7 +7,7 @@ ARG AVSERVERHD_VERSION="2.2.3"
 # Set necessary build attributes
 ARG DEBIAN_FRONTEND="noninteractive"
 ARG DEPENDENCIES="\
-  curl \
+  wget \
   bzip2"
 ENV LANG C.UTF-8
 
@@ -17,11 +17,11 @@ RUN \
   apt-get install -y --no-install-recommends vlc-nox && \
   apt-get install -y $DEPENDENCIES && \
 
-# Create directory structure, fetch binary and unpack
-  mkdir -p /opt/AirVideoServerHD && \
-  curl -o --tlsv1 \
-    /tmp/avhd-pkg.tar.bz2 -L \ "https://s3.amazonaws.com/AirVideoHD/Download/AirVideoServerHD-${AVSERVERHD_VERSION}.tar.bz2" && \
-  tar xjf avhd-pkg.tar.bz2 -C /opt/AirVideoServerHD && \
+# Create fetch binary and unpack
+  wget -qO \
+    /tmp/avhd-pkg.tar.bz2 -L \
+    "https://s3.amazonaws.com/AirVideoHD/Download/AirVideoServerHD-${AVSERVERHD_VERSION}.tar.bz2" && \
+  tar xjf /tmp/avhd-pkg.tar.bz2 -C /opt && \
 
 # Clean up
   apt-get purge -y $DEPENDENCIES && \
