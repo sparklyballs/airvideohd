@@ -4,7 +4,7 @@ This is an Unofficial Docker container for InMethod's Air Video Server HD based 
 
 # madcatsu/airvideohd
 
-[![](https://images.microbadger.com/badges/version/madcatsu/airvideohd.svg)](https://microbadger.com/images/madcatsu/airvideohd "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/image/madcatsu/airvideohd.svg)](https://microbadger.com/images/madcatsu/airvideohd "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/madcatsu/airvideohd.svg)](https://microbadger.com/images/madcatsu/airvideohd "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/image/madcatsu/airvideohd.svg)](https://microbadger.com/images/madcatsu/airvideohd "Get your own image badge on microbadger.com")[![](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://hub.docker.com/r/madcatsu/airvideohd/builds/)
 
 Air Video HD allows you to watch videos streamed instantly from your computer on your iPhone, iPad, iPod touch or Apple TV.
 
