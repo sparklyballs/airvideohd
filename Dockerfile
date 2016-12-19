@@ -17,7 +17,7 @@ RUN \
 	--no-install-recommends \
 	vlc-nox && \
  apt-get install -y \
-	avahi \
+	avahi-daemon \
 	bzip2 \
 	dbus && \
 
