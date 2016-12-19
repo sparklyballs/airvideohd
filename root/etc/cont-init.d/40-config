@@ -1,15 +1,19 @@
 #!/usr/bin/with-contenv bash
 
-# Copy default config in place and match
-# AirVideo Server Computer Name with Container name
+# copy config
 [[ ! -e /config/Server.properties ]] && \
-  sed -i -e "s/computerName\s*=\s*AirVideoServerHD/computerName = $HOSTNAME/g" /defaults/Server.properties
-  cp /defaults/Server.properties /config/Server.properties
+	cp /defaults/Server.properties /config/Server.properties
 
-# Set permissions
+
+# configure hostname
+sed -i -e \
+	"s/computerName\s*=\s*AirVideoServerHD/computerName = $HOSTNAME/g" \
+	/config/Server.properties
+
+# permissions
 chown -R abc:abc \
-  /config /transcode /opt/AirVideoServerHD
-
-# Make sure binary is executable
+	/config \
+	/opt/airvideohd \
+	/transcode
 chmod +x \
-  /opt/AirVideoServerHD
+	/opt/airvideohd/AirVideoServerHD

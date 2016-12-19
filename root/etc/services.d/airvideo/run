@@ -1,0 +1,6 @@
+#!/usr/bin/with-contenv bash
+umask 022
+
+exec \
+	s6-setuidgid abc /opt/airvideohd/AirVideoServerHD \
+	--config=/config/Server.properties

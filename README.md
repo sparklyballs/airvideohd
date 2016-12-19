@@ -14,7 +14,7 @@ Air Video HD allows you to watch videos streamed instantly from your computer on
 docker create --name=<container name> \
 -e PUID=<host user ID> \
 -e PGID=<host group ID> \
--v </path/to/your/videos>:/multimedia \
+-v </path/to/your/videos>:/media \
 -v </path/to/your/persistent/config/folder>:/config \
 -v </path/to/your/scratch/disk/for/transcoding>:/transcode \
 -p 5353:5353/udp \
@@ -52,7 +52,7 @@ Edit Server.properties and replace the Sharing section with the following entrie
 
 # First shared folder
 sharedFolders1.displayName = Movies
-sharedFolders1.path = /multimedia/Movies
+sharedFolders1.path = /media/Movies
 
 # Second shared folder
 sharedFolders2.displayName = TV Shows
@@ -76,7 +76,7 @@ Edit Server.properties and replace the Sharing section with the following entrie
 
 # First shared folder
 sharedFolders1.displayName = Movies
-sharedFolders1.path = /multimedia/Movies
+sharedFolders1.path = /media/Movies
 
 # Second shared folder
 sharedFolders2.displayName = TV Shows
@@ -100,7 +100,7 @@ Edit the Server.properties and replace the Sharing section with the following en
 
 # First shared folder
 sharedFolders1.displayName = Movies
-sharedFolders1.path = /multimedia/Movies
+sharedFolders1.path = /media/Movies
 
 # Second shared folder
 sharedFolders2.displayName = TV Shows
@@ -138,7 +138,7 @@ userAccounts3.password = potter <---- change this!
 We'd like to improve this container further so we've listed here a couple of future Roadmap items under consideration:
 
 + Version specification - Choose the latest or a specific numbered version of the Air Video Server HD binary to run
-+ Share creation via ENV - Setup one or more multimedia folders with open or limited access using environment vars
++ Share creation via ENV - Setup one or more media folders with open or limited access using environment vars
 
 #### Thanks
 This work is largely based off the existing projects put together by the Linuxserver.io guys. Go buy them a beer!

@@ -1,39 +1,44 @@
 FROM lsiobase/xenial
 MAINTAINER madcatsu
 
-# AirVideo Server HD version
+# package versions
 ARG AVSERVERHD_VERSION="2.2.3"
 
-# Set necessary build attributes
-ARG DEBIAN_FRONTEND="noninteractive"
-ARG DEPENDENCIES="\
-  wget \
-  bzip2 \
-  avahi-daemon \
-  dbus"
+# global environment settings
 ENV LANG C.UTF-8
 
-# Install required packages
+# build environment settings
+ARG DEBIAN_FRONTEND="noninteractive"
+
+# install packages
 RUN \
-  apt-get update && \
-  apt-get install -y --no-install-recommends vlc-nox && \
-  apt-get install -y $DEPENDENCIES && \
+ apt-get update && \
+ apt-get install -y \
+	--no-install-recommends \
+	vlc-nox && \
+ apt-get install -y \
+	avahi \
+	bzip2 \
+	dbus && \
 
-# Create fetch binary and unpack
-  wget -qO \
-    /tmp/avhd-pkg.tar.bz2 -L \
-    "https://s3.amazonaws.com/AirVideoHD/Download/AirVideoServerHD-${AVSERVERHD_VERSION}.tar.bz2" && \
-  tar xjf /tmp/avhd-pkg.tar.bz2 -C /opt && \
+# install airvideo
+ mkdir -p \
+	/opt/airvideohd && \
+ curl -o \
+ /tmp/airvideo.tar.bz2 -L \
+	"https://s3.amazonaws.com/AirVideoHD/Download/AirVideoServerHD-${AVSERVERHD_VERSION}.tar.bz2" && \
+ tar xjf \
+ /tmp/airvideo.tar.bz2 -C \
+	/opt/airvideohd --strip-components=1 && \
 
-# Clean up
-  apt-get purge -y wget bzip2 && \
-  apt-get autoremove -y && \
-  apt-get clean -y && \
-  rm -rf /var/lib/apt/lists/* /tmp/*
+# cleanup
+ rm -rf \
+	/tmp/* \
+	/var/lib/apt/lists/*
 
-# Add local defaults
+# copy local files
 COPY /root /
 
-# Setup ports and volumes for mapping
+# ports and volumes
 EXPOSE 45633 5353/udp
-VOLUME /config /transcode /multimedia
+VOLUME /config /media /transcode
